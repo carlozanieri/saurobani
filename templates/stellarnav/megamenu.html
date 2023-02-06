@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>Sauro Foto</title>
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet">
+	<!-- required -->
+	<link rel="stylesheet" type="text/css" media="all" href="static/stellarnav/css/stellarnav.css">
+	<!-- required -->
+<style>
+/* styles for this sample only */
+*{ margin: 0; padding: 0; }
+body { height: 3200px; font-size: 16px; font-family: 'Exo 2', sans-serif; background: #efefef; font-weight: 300; }
+.header { text-align: center; }
+.header a { padding: 50px 0; display: block; font-size: 48px; text-decoration: none; color: #555; }
+.container { max-width: 1200px; margin: 0 auto; }
+@media only screen and (max-width : 1000px) {
+	.stellarnav > ul > li > a { padding: 20px 23px; }
+}
+/* styles for this sample only */
+</style>
+
+</head>
+<body>
+	<!--<div class="header">
+		<a href="#">StellarNav.js</a>
+	</div>-->
+	<div class="stellarnav">
+		
+		<ul>
+			{% for menus in menu %}
+			<li class="mega" data-column="5"><a href="{{ menus.link }}" class="gn-icon gn-icon-help">{{menus.titolo}}</a>
+		    	<ul>
+					
+					{% for submenus in submenu %}
+		    		<li>
+						{% if menus.codice == submenus.radice %}
+                        					<a href="{{submenus.link}}" ><span></span> {{submenus.titolo}}</a>
+											<input id="codice" name="codice" type="hidden" value={{submenus.codice}} />
+											{% endif %}
+		    			<ul>
+				    		
+									
+									
+		    			</ul>
+		    		</li>
+					{% endfor %}
+					
+		    	
+			
+		    <li class="drop-left"><a href="">Drop Left</a>
+		    	<ul>
+		    		<li><a href="#">How deep?</a>
+		    			<ul>
+				    		<li><a href="#">Deep</a>
+				    			<ul>
+				    				<li><a href="#">Even deeper</a>
+				    					<ul>
+				    						<li><li><a href="#">Item</a></li></li>
+				    						<li><li><a href="#">Item</a></li></li>
+				    						<li><li><a href="#">Item</a></li></li>
+				    					</ul>
+				    				</li>
+				    				<li><a href="#">Item</a></li>
+				    				<li><a href="#">Item</a></li>
+				    				<li><a href="#">Item</a></li>
+				    			</ul>
+				    		</li>
+				    		<li><a href="#">Item</a></li>
+				    		<li><a href="#">Item</a></li>
+				    		<li><a href="#">Item</a></li>
+				    		<li><a href="#">Item</a></li>
+		    			</ul>
+		    		</li>
+		    		<li><a href="#">Item</a></li>
+		    		<li><a href="#">Item</a></li>
+		    		<li><a href="#">Item</a></li>
+		    		<li><a href="#">Item</a></li>
+		    	</ul>
+		    </li>
+			{% endfor %}
+		</ul>
+		
+	</div><!-- .stellarnav -->
+
+	<!-- required -->
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+	<script type="text/javascript" src="static/stellarnav/js/stellarnav.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			jQuery('.stellarnav').stellarNav({
+				theme: 'dark',
+				breakpoint: 960,
+				position: 'right',
+				phoneBtn: '18009997788',
+				locationBtn: 'https://www.google.com/maps'
+			});
+		});
+	</script>
+	<!-- required -->
+
+	<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+</body>
+</html>

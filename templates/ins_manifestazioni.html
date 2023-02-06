@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet"/>
+
+	<title>Pro Loco San Piero</title>
+
+		<meta name="author" content="Carlo Zanieri" />
+		<link rel="shortcut icon" href="../favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="static/menu_6/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="static/menu_6/css/component.css" />
+		<script src="static/menu_6/js/modernizr.custom.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+		<link rel="stylesheet" type="text/css" href="static/menu_6/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="static/menu_6/css/component.css" />
+    <!-- css files -->
+    <link rel="stylesheet" href="static/MENU/css/style.css"/>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- js files -->
+    <style>
+.content { margin:50px auto; max-width:728px; line-height:1.7}
+
+    </style>
+<style>
+
+</style>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+</head>
+
+<body>
+
+	{% include 'menu5.html' %}
+<br/>
+<br/>
+<center/>
+
+<h2>File submission form (single)</h2>
+<form action="/upload_form" method="post" accept-charset="utf-8"
+      enctype="multipart/form-data">
+	  <label for=titolo">titolo:</label>
+	  <input type="text" id="titolo" name="titolo" maxlength="512">
+	  <label for=titolo">Descrizione:</label>
+	  <input type="text" id="descrizione" name="descrizione" maxlength="1024"><br/>
+    <label for="file">File </label>
+    <input id="file" name="file" type="file" value="" />
+	
+	<label for="cars">Scegli categoria:</label>
+	<select id="dir" name="dir">
+	  <option value="/home/carlo/develop/myapp/static/img/manifestazioni/">Manifestazioni</option>
+	  <option value="/home/carlo/develop/myapp/static/img/mugello/">Mugello</option>
+	  <option value="/home/carlo/develop/myapp/static/img/sanpiero/">San Piero</option>
+	  <option value="/home/carlo/develop/myapp/static/img/index/">Pro Loco</option>
+	</select> 
+    
+    <input type="submit" value="submit" />
+</form>
+
+<br/>
+<br/>
+
+
+<footer>
+	<h1 style="color:#000000; margin-left:30%; margin-right:25%; margin-top:10%; margin-bottom:5%;">Si ringraziano gli Sponsor</h1>
+	<div class="flex" ><img  src="static/img/Sponsor SPS 2020.jpg"/></div>
+</footer>
+
+</body>
+</html>

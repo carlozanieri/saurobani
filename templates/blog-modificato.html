@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+
+	<title>CarloZanieri.it {{urlx}}</title>
+  <meta name="author" content="Carlo Zanieri"/>
+  <link rel="shortcut icon" href="../favicon.ico"/>
+ 
+ 
+	<script src="static/menu_6/js/modernizr.custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/menu_6/css/default.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="static/news/css/styles.css"/>
+  <script src="static/js/jquery.js"></script>
+  <script type="text/javascript" src="static/news/js/responsiveCarousel.min.js"></script>  
+  
+
+<script type="text/javascript">
+$(function(){
+  $('.crsl-items').carousel({
+    visible: 8,
+    itemMinWidth: 90,
+    itemEqualHeight: 170,
+    itemMargin: 9,
+  });
+
+  $("a[href=#]").on('click', function(e) {
+    e.preventDefault();
+  });
+});
+</script>
+<style>
+  .content { margin:50px auto; max-width:728px; line-height:1.7}
+  </style>
+</head>
+
+<body>
+  <iframe  width="10%" height="300 px" src="/menu" frameborder="0" style="padding-top:1%;"></iframe>
+  <iframe  width="90%" height="500 px" src="/newss" frameborder="0" style="padding-top:10%;"></iframe>
+  
+  
+	
+</body>
+ 
+</html>
