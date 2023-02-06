@@ -1,0 +1,327 @@
+body, html{
+  height:100% ;/* correct bug for chrome display on codepen ? */
+}
+/* colors mixins and all the good stuff */
+
+@red : rgb(185, 33, 32);
+@lred: rgb(221, 73, 73);
+@vlred: rgba(245,212,212,1);
+@light:rgba(255, 255, 255, 1);
+@drred: darken(@red,7%);
+@90plight:fadeout(@light,10%);
+
+nav{
+  display:block;
+}
+
+.right {
+    float: right;
+    margin-left: 1em;
+}
+
+/* icons */
+@font-face {
+font-family: 'icomoon';	src:url('https://dl.dropbox.com/u/26865764/icomoon.eot');	src:url('https://dl.dropbox.com/u/26865764/icomoon.eot?#iefix') format('embedded-opentype'),		url('https://dl.dropbox.com/u/26865764/icomoon.dev.svg#icomoon') format('svg'),		url('https://dl.dropbox.com/u/26865764/icomoon.woff') format('woff'),		url('https://dl.dropbox.com/u/26865764/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.ico-heart:before, .ico-letter:before, .ico-file:before, .ico-real:before, .ico-pen:before, .ico-user:before, .ico-rocket:before, .ico-arrow-right:before, .ico-arrow-left:before, .ico-arrow-left-2:before, .ico-arrow-right-2:before, .ico-caret-down:before, .ico-caret-up:before, .ico-caret-left:before, .ico-caret-right:before, .ico-facebook:before, .ico-twitter:before, .ico-google-plus:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.ico-caret-down:before {
+	content: "\f0d7";
+}
+.ico-caret-up:before {
+	content: "\f0d8";
+}
+
+/* ----------------------------- */
+/* == Menu */
+/* ----------------------------- */
+
+.menu-wrapper{
+    position:relative;
+    z-index:10;
+    font-family: 'Economica', sans-serif;
+    font-size:1.857em;
+    text-transform:uppercase;
+    padding-top:2px;
+    padding-bottom:2px;
+    background:@red;
+
+    .menu{
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+        text-align:center;
+    }
+    .menu > li {
+        position: relative;
+        padding: 0.7em  0;
+        display:inline-block;
+    }
+
+    ul.menu,
+    a.menu-link{
+        border-top:1px dashed @lred;
+        border-bottom:1px dashed @lred;
+    }
+    /* the hidden link for RWD nav */
+    a.menu-link {
+        display: none;
+        padding: 0.7em  0;
+        background:@red;
+    }
+
+    /* the rest of the menu lvl 1 */
+    a {
+        display: block;
+        position:relative;
+        padding: 0 0.5em;
+        margin:0 0.2em;
+        line-height: 1.3em;
+        color:@light;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        &:hover{
+           border-bottom: 1px solid @90plight;
+           transition:all 0.5s;
+        }
+    }
+
+    /* current links */
+    .menu > .current-menu-item > a,
+    .menu > .current-menu-ancestor > a {
+        position: relative;
+        z-index:12;
+        background:@vlred;
+        color:@red;
+        border-bottom: 1px solid transparent;
+        &:hover{
+            background:lighten(@vlred,10%);
+            &:after{
+               border-top-color: lighten(@vlred,10%);
+            }
+        }
+        &:after {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0);
+            border-top-color: @vlred;
+            border-width: 5px;
+            left: 50%;
+            margin-left: -5px;
+        }
+    }
+
+    li+ li a:before{
+        content:"*";
+        position:absolute;
+        left:-0.5em;
+        top:0.2em;
+        color:@light;
+        opacity:0.8;
+        font-family:Arial, Verdana, sans-serif;
+    }
+
+
+    /* submenu ! */
+    .sub-menu {
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        margin: 18px 0 0 -0.7em;
+        padding:3px 0 0 0;
+        position: absolute;
+        max-height: 0em;
+        overflow: hidden;
+        list-style: none outside none;
+        text-align:left;
+        text-transform:none;
+        li{
+            display:block;
+            background: @drred;
+            margin-left:0.7em;
+            margin-right: 0.7em;        }
+        a{
+            margin:0;
+            white-space:nowrap;
+            line-height: 1.8em;
+            border:none;
+            &:hover{
+                background:darken(@red,15%)
+            }
+        }
+        li:last-child{
+            padding-bottom:0.26em;
+            a{
+            border-bottom:1px dashed @lred;
+            }
+        }
+    }
+
+    /* unhide the 2nd level */
+    li:hover .sub-menu{
+        max-height: 30em;
+        transition: max-height 0.5s;
+    }
+}
+
+
+
+/* Responsive Menu */
+
+@media screen and (max-width: 768px) {
+    .js .menu-wrapper nav[role=navigation] {
+        overflow:hidden;
+        max-height: 0em;
+
+    }
+    .js .menu-wrapper nav[role=navigation].active {
+        max-height: 30em;
+        transition: max-height 0.5s ease-out;
+    }
+    .menu-wrapper{
+        a.menu-link{
+            display:block;
+            width:auto;
+            padding-right:15px;
+            padding-left:10px;
+            border:none;
+            margin:0;
+            &:hover{
+                background:@drred;
+            }
+            &.active .ico-caret-down:before{
+                content: "\f0d8";
+            }
+        }
+
+        .menu .menu{
+             padding-bottom: 5px;
+        }
+        .menu  li {
+            display:block;
+            border:1px solid pink;
+            border:none;
+        }
+        .menu > li{
+            padding:0px;
+            border:none;
+            &+li{
+                border-top:1px dashed @lred;
+            }
+        }
+        .menu a{
+            padding:0.5em 0;
+            margin:0px;
+            border:none;
+            &:hover{
+                background:@drred;
+            }
+        }
+        .menu .rightalign{
+             float:none;
+        }
+        li + li a:before{
+            content:"";
+        }
+
+        /* unhide the 2nd level */
+        li:hover .sub-menu{
+            max-height: 0em;
+            transition:none;
+        }
+        .sub-menu{
+            background:none;
+            margin-left:0px;
+            margin-top:1px;
+            display:block;
+            width: 100%;
+            li,
+            li a{
+                margin:0;
+                display:block;
+                width:100%;
+            }
+            a{
+                padding-left:0.8em;
+                &:hover{
+                   background:darken(@red,15%);
+                }
+            }
+            li{
+                border-bottom:1px dashed @lred;
+            }
+            li:last-child{
+                padding:0;
+                a{
+                    border:none;
+                }
+            }
+        }
+        .menu .has-subnav{
+            position:relative;
+        }
+        li .sub-menu.active{
+            max-height: 30em;
+            overflow:visible;
+            position:relative;
+            z-index:9;
+            transition: max-height 0.5s ease-out;
+        }
+
+        /* styling the toggle menu */
+        .toggle-link{
+            height:67px;
+            width: 60px;
+            display:block;
+            position:absolute;
+            right:0px;
+            z-index:200;
+            font-size:0em;
+            cursor:pointer;
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            &:hover{
+                transition:all 0.2s;
+                background:lighten(@red,5%);
+            }
+        }
+        /* arrow to indicate that we have subnav*/
+         .menu .has-subnav > .toggle-link:after{
+            content: "\f0d7";
+            position:absolute;
+            width:50px;
+            top:50%;
+            margin-top:-15px;
+            bottom:50%;
+            right:4px;
+            font-size:28px;
+            color:#fff;
+        }
+         .menu .has-subnav  > .toggle-link.active:after{
+             content: "\f0d8";
+             margin-top:-18px;
+        }
+    }
+}
+.content{
+ max-width:950px;
+ min-height:500px;
+ margin:30px auto;
+}

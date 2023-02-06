@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="en">
+<head>
+    <title>Nivo Slider whit Animations</title>
+    
+    <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,300' rel='stylesheet' type='text/css'>
+    
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+
+	function captionMoveIn() {
+		$('.nivo-caption')
+		.fadeIn("fast")
+		.animate({left: "0px"},1400)
+	;};
+	
+	
+	function captionMoveOut() {
+		$('.nivo-caption')
+		.animate({left: "-400px"},1400)
+		.fadeOut("fast")
+	;};
+
+	</script>
+    <script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider({
+	        effect:"sliceUpDownLeft",
+	        pauseTime:6000,
+			animSpeed:850,
+			afterLoad: function (){captionMoveIn();},
+	        beforeChange: function (){captionMoveOut();captionMoveIn();}
+	      
+	    });
+	});
+	</script>
+
+</head>
+<body>
+    <div id="wrapper">
+        
+
+	<div class="slider-wrapper">
+	    <div id="slider" class="nivoSlider">
+	        <img src="img/london-bridge.jpg" alt=""title="#htmlcaption1"  />
+	        <img src="img/skyline.jpg" alt="" title="#htmlcaption2" />
+	        <img src="img/canada-water.jpg" alt="" title="#htmlcaption3"  />  
+	    </div>
+	</div>
+    
+    <div id="htmlcaption1" class="nivo-html-caption">
+	   	<h1>London Bridge</h1>
+	    <p>London Bridge è un ponte sul Tamigi a Londra, che collega la City of London al borgo londinese di Southwark. <a href="">Continua...</a></p>
+	</div>
+	
+	<div id="htmlcaption2" class="nivo-html-caption">
+		<h1>Skiline from DLR</h1>
+	    <p>La Docklands Light Railway (DLR) è una metropolitana leggera che serve l'area ricostruita della zona del Docklands. <a href="">Continua...</a></p>.
+	</div>
+	
+	<div id="htmlcaption3" class="nivo-html-caption">
+		<h1>Canada Water</h1>
+	    <p>Canada Water è una stazione della metropolitana di Londra, situata a Rotherhithe, nella parte meridionale di Londra. <a href="">Continua...</a></p>
+	</div>
+	
+	
+    
+</body>
+</html>

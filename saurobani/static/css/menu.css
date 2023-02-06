@@ -1,0 +1,149 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body { font-family:'Lato'; background-color:#f7f7f7}
+header { width: 100%; }
+
+.nav-bar { display: none; }
+
+header nav {
+  background: #c0392b;
+  z-index: 1000;
+  width: 100%;
+  margin: auto;
+}
+
+header nav ul { list-style: none; }
+
+header nav ul li {
+  float: left;
+  position: relative;
+}
+
+header nav:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header nav ul li a {
+  color: #fff;
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: tahoma;
+}
+
+header nav ul li:hover { background: #34495e; }
+
+header nav ul li:hover i { color: yellow; }
+
+header nav ul li i { margin-right: 10px; }
+
+header nav ul li:hover .children { display: block; }
+
+header nav ul li .children {
+  display: none;
+  background: #8e44ad;
+  position: absolute;
+  width: 150%;
+  z-index: 1000;
+}
+
+header nav ul li .children span { display: none; }
+
+header nav ul li .children li {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #ffffff99;
+}
+
+header nav ul li .children li a { margin-left: 30px; }
+
+header nav ul li .fa-angle-down {
+  position: relative;
+  top: 3px;
+}
+
+/*responsive nav style*/
+
+@media all and (max-width: 800px) {
+
+body { padding-top: 80px; }
+
+.nav-bar {
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #3498db;
+}
+
+.nav-bar span {
+  float: left;
+  font-size: 20px;
+  padding: 20px;
+  color: #fff;
+}
+
+.nav-bar .fa-bars {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  float: right;
+}
+
+header nav {
+  width: 80%;
+  height: auto;
+  position: fixed;
+  right: 100%;
+  top : 63px;
+  overflow: hidden;
+  height: 100%;
+}
+
+header nav ul li {
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, .5);
+  width: 100%;
+}
+
+header ul li a { display: block; }
+
+header nav ul li .children {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+
+header nav ul li:hover .children { display: none; }
+
+header nav ul li ul li:first-child { border-top: 1px solid #ffffff99; }
+
+header nav ul li .children span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+header nav ul li .children a {
+  margin-left: 10px;
+  padding: 5px 0;
+}
+
+header nav ul li .fa-angle-down {
+  position: relative;
+  top: 3px;
+}
+}

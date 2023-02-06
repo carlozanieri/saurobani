@@ -1,0 +1,107 @@
+
+/*******************************/
+/********* Multi Level Dropdown *********/
+/*******************************/
+
+body{
+  position: relative;
+  background: #f3d6ed;
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #333;
+}
+.dm_multiLevel {
+	width: 100%;
+	font-size: 1.1rem;
+	height: 3.6rem;
+	background: #763568;
+}
+.dm_multiLevel.fixed{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+.dm_multiLevel ul{
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font: inherit;
+	vertical-align: baseline;	
+}
+.dm_multiLevel ul li{
+  position: relative;
+  display: inline-block;
+}
+
+.dm_multiLevel>ul>li {
+  float: left;
+}
+.dm_multiLevel a {
+  display: inline-block;
+  padding: 1.2rem 1.8rem;
+  line-height: 1.2rem;
+  color: #FFF;
+  transition: .2s ease-out;
+}
+.dm_multiLevel a:hover, li.active{
+  background: #5B3256;
+}
+
+
+/* dropdown */
+.dm_multiLevel ul.subMenu {
+  box-sizing: border-box;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 170%;
+}
+
+.dm_multiLevel ul.subMenu li {
+  width: 100%;
+  background: #5B3256;
+}
+
+.dm_multiLevel ul.subMenu li a {
+  width: 100%;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.dm_multiLevel ul.subMenu li a:hover, .dm_multiLevel ul.subMenu li.active>a {
+  background: #763568;
+  padding-left: 1.1rem;
+}
+
+.dm_multiLevel ul.subMenu ul.subMenu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+}
+
+/* responsive */
+.container {
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}

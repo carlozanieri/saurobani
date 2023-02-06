@@ -1,0 +1,352 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* -------------reset----------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+input:focus, button:focus {outline:0;}
+
+img {
+    vertical-align: middle;
+}
+
+a{
+	text-decoration:none;
+}
+
+ul li{
+	list-style:none;
+}
+
+html,body{
+	font-family: 'Roboto Slab', serif;
+	color:#666 /*color-text*/;
+	height:100%;
+	width:100%;
+  background-color:white;
+}
+
+h1{
+	font-size: 1.5em;
+	text-align:left;
+	font-weight: bold;
+	color:#A24038/* primary color*/;
+}
+
+/* -----------------contenitore e contenuto ------------------ */
+
+.contenitore .contenuto{
+	max-width:1200px;
+	margin:auto;
+	padding: 70px 10px;
+}
+
+.contenitore .contenuto a{
+	color:#A24038/* primary color*/;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.contenitore .contenuto a:hover{
+	color:#B3453E/* primary lightcolor*/;
+}
+
+/* -----------------Menu nella versione mobile-----------------*/
+
+.active{
+	color:#FFFFFF/* primary super-lightcolor*/;
+	background-color: #B3453E/* primary lightcolor*/;
+}
+
+.active-dropdown{
+	color:#FFFFFF /* primary super-lightcolor*/;
+	background-color:#B3453E/* primary lightcolor*/;
+}
+
+nav{
+	height:100%;
+	background-color:#A24038;/* primary lightcolor* /* sfondo menu mobile*/
+	position:fixed;
+	width:100%;
+	margin-top:54px;
+	visibility:hidden;
+	overflow:auto;/* permette lo scroll quando il menu è aperto*/
+
+}
+
+nav ul{
+	padding-bottom:54px;
+}
+
+nav ul li a {
+	padding: 16px 0 16px 32px;
+	display:block;
+	color:#fbfafa;
+	font-size:16px;
+	transition: background-color 0.3s ease;
+}
+
+.submenu{
+	color:#FF6759 /* primary super-lightcolor*/;
+	padding-left: 55px;
+	padding-bottom: 5px;
+}
+
+nav ul li ul {
+	padding-left:0;
+	padding-bottom:0;
+}
+
+nav ul li ul li a {
+	font-size:16px;
+	padding:10px 0 10px 55px;
+	border:hidden;
+}
+
+.lingua{
+	border-top: 1px solid #B3453E/* primary lightcolor*/;
+}
+
+.lingua > a::before{
+	content: url(https://chefstudio.it/img/blog/earth-globe.svg);
+	margin-right: 5px;
+}
+
+/* ----------------- div bar per l'attivazione del menu ------------------ */
+
+#bar{
+	background-color: #A24038 /* primary color*/;
+	height:54px;
+	width:100%;
+	z-index:2;
+	position:fixed;
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.4);
+}
+
+#bar #logo{
+	float:right;
+	margin-right:12px;
+}
+
+/* ----------------- Hamburger animation ------------------ */
+
+#hamburger {
+  display: none;
+}
+
+.menuicon {
+ 	position:fixed;
+	height:54px;
+	width:54px;
+	margin-left:5px;
+	z-index:3;
+}
+
+.menuicon  span {
+    display: block;
+    top: 25px;
+    width: 40px;
+    height:3px;
+    left:8px;
+    background-color: #fff;
+    position: relative;
+	border-radius:20px;
+    transition-duration: 0;
+    transition-delay: .1s;
+}
+
+.menuicon  span::after, .menuicon  span::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 40px;
+    height:3px;
+    background-color: #fff;
+	border-radius:20px;
+    transition-duration: .1s;
+	-webkit-transition-delay: .1s, 0;
+    transition-delay: .1s, 0;
+}
+.menuicon  span::before {
+      margin-top: -10px;
+}
+.menuicon  span::after {
+      margin-top: 10px;
+}
+
+#hamburger:checked ~ .menuicon span{
+    background-color: rgba(0,0,0,0);
+}
+
+#hamburger:checked ~ .menuicon span::before {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+
+#hamburger:checked ~ .menuicon span::after {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+
+#hamburger:checked ~ .menuicon span::before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+#hamburger:checked ~ .menuicon span::after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+/* ----------------- menu animation faccio apparire il menu ------------------ */
+
+#hamburger:checked ~ .menu-visibility {
+	visibility:visible;
+}
+
+/* -----------------media per menu orizzontale ------------------ */
+
+@media screen and (min-width: 980px){
+
+.menuicon{
+	display:none; /* togliere icona hambuger icon */
+}
+
+#bar #logo{
+	float:left;
+	margin-left:12px;
+}
+
+nav{
+	z-index:3;
+	margin-top:19px;
+	height:auto;
+	background-color:transparent;
+	transition:none;
+	width:auto;
+	float:right;
+	right:12px;
+	visibility:visible;
+	font-family:'Roboto Slab', serif;
+	overflow:inherit;
+}
+
+.active{
+	background-color:transparent;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+
+.active-dropdown{
+	color:#fff;
+	background-color:#B3453E/* primary lightcolor*/;
+}
+
+nav ul{
+	padding:0;
+}
+
+nav ul li a {
+	padding:0;
+	display:inline;
+	font-size:16px;
+	color: #fff;
+}
+
+nav ul li a:hover {
+	background-color:transparent;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+
+.submenu{
+	padding-left: 0;
+	color:#FFFFFF;
+}
+
+nav ul li {
+	margin:0;
+	float:left;
+	position:relative;
+	padding:0 16px;
+}
+
+.submenu::after{
+	content: url(https://chefstudio.it/img/blog/arrow-down.svg);
+	float: right;
+	padding-left: 6px;
+}
+
+/* ----------------- dropdown - attivare il menu a tendina ------------------ */
+
+nav ul li ul {
+	position:fixed;
+	height:0;
+	overflow:hidden;
+	background-color: #A24038 /* primary color*/
+}
+
+nav ul li:hover ul{
+	height:auto;
+	padding-top: 14px;
+	position: absolute;
+    right: 0;
+}
+
+nav ul li ul li {
+	font-size: 14px;
+	font-weight: normal;
+	float:none;
+	padding:0;
+	min-width: 160px;
+	border-top: 1px solid #B3453E/* primary lightcolor*/;
+}
+
+nav ul li ul li a {
+	padding: 16px 32px;
+	display: block;
+	background-color: #A24038/* primary color*/;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+	background-color:#B3453E/* primary lightcolor*/;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+
+.lingua{
+	border-top: 0;
+	border-left: solid 1px #fff;
+	float: left;
+}
+
+}
