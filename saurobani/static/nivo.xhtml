@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+
+
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+
+    <link rel="stylesheet" href="{{url_for('static', filename ='nivo-slider/css/nivo-slider.css')}}" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,300' rel='stylesheet' type='text/css'/>
+
+    <script type="text/javascript" src="{{url_for('static', filename ='nivo-slider/js/jquery-1.7.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename ='nivo-slider/js/jquery.nivo.slider.js')}}"></script>
+    <script type="text/javascript">
+
+	function captionMoveIn() {
+		$('.nivo-caption')
+		.fadeIn("fast")
+		.animate({left: "0px"},1400)
+	;};
+
+
+	function captionMoveOut() {
+		$('.nivo-caption')
+		.animate({left: "-400px"},1400)
+		.fadeOut("fast")
+	;};
+
+	</script>
+    <script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider({
+	        effect:"sliceUpDownLeft",
+	        pauseTime:6000,
+			animSpeed:850,
+			afterLoad: function (){captionMoveIn();},
+	        beforeChange: function (){captionMoveOut();captionMoveIn();}
+
+	    });
+	});
+	</script>
+
+</head>
+
+<body >
+    <div   id="wrapper">
+
+
+	<div class="slider-wrapper">
+	    <div   id="slider" class="nivoSlider">
+			{% for sliders in slider %}
+
+			<span>
+			<img class="zoom" src= "{{url_for('static', filename ='img/')}}{{sliders[1]}}/{{sliders[2]}}" alt="" title="#htmlcaption{{sliders[0]}}" />
+			</span>
+			{% endfor %}
+	    </div>
+
+	</div>
+
+{% for sliders in slider %}
+    <div id="htmlcaption{{sliders[0]}}" class="nivo-html-caption">
+
+		<h1><a style="color:#000000;" href="{{sliders[5]}}">{{sliders[3]}}</a></h1>
+	    <p> {{sliders[4]}} <a href="">Continua...</a></p>
+
+	</div>
+{% endfor %}
+	</div>
+
+
+</body>
+</html>

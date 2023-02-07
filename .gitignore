@@ -1,0 +1,5 @@
+access1.log
+error1.log
+*.log
+
+*.zip

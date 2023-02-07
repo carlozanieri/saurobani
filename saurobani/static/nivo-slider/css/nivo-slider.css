@@ -1,0 +1,236 @@
+/*
+ * jQuery Nivo Slider v3.1
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2012, Dev7studios
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+.zoom {
+
+  background-color:white;
+  transition: transform .2s; /* Animation */
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(5.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+@font-face {
+	font-family: 'fontawesome';
+	src:url('../fonts/fontawesome.eot');
+	src:url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/fontawesome.svg#fontawesome') format('svg'),
+		url('../fonts/fontawesome.woff') format('woff'),
+		url('../fonts/fontawesome.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	font-family:dosis;
+	font-weight:300;
+}
+
+#wrapper {
+	width:600px;
+	position:relative;
+	margin:100px auto;
+}
+
+
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+
+.nivoSlider img {
+	position:absolute;
+	top:0;
+	left:0;
+	max-width:none;
+}
+
+.nivo-main-image {
+	display:block!important;
+	position:relative!important;
+	width:100%!important;
+}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+}
+
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+	top:0;
+}
+
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+	overflow:hidden;
+}
+
+.nivo-box img {
+	display:block;
+}
+
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:-400px;
+	bottom:70px;
+	width:300px;
+	color:#fff;
+	z-index:8;
+	overflow:hidden;
+	display:none;
+}
+
+.nivo-caption h1 {
+	padding:10px 20px;
+	margin:0;
+	background:#fff;
+	color:#000;
+	opacity:.8;
+	font-weight:400;
+	float:left;
+}
+
+.nivo-caption p {
+	padding:10px 20px;
+	margin:0;
+	background:#000;
+	opacity:.8;
+	font-weight:400;
+	float:left;
+}
+
+.nivo-caption a {
+	display:inline!important;
+}
+
+.nivo-html-caption {
+	display:none;
+}
+
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+	display:none;
+}
+
+.nivo-prevNav {
+	left:0;
+}
+
+.nivo-nextNav {
+	right:0;
+}
+
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav {
+	text-align:center;
+	padding:15px 0;
+	float:left;
+	display:block;
+	bottom:0;
+	right:20px;
+	position:absolute;
+	z-index:99999;
+}
+
+.nivo-controlNav a {
+	cursor:pointer;
+}
+
+.nivo-controlNav a.active {
+	font-weight:700;
+}
+
+a {
+	 color:#04ea80;
+	/*color:#b80511;*/
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+.nivo-controlNav a {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background:url(bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin:0 2px;
+}
+
+.nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+@media (max-width: 960px) {
+	#wrapper {
+		width:100%;
+		position:relative;
+		margin:100px auto;
+	}
+}
+
+@media (max-width: 767px) {
+	#wrapper {
+		width:100%;
+		position:relative;
+		margin:100px auto;
+	}
+	
+	.nivo-caption {
+		bottom:0;
+	}
+	
+	.nivo-caption h1 {
+		font-size:110%;
+	}
+	
+	.nivo-caption p {
+		font-size:90%;
+	}
+	
+	.nivo-controlNav {
+		display:none;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+	#wrapper {
+		width:100%;
+		position:relative;
+		margin:100px auto;
+	}
+}

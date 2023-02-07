@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>News Ticker Effect</title>
+	<script src=
+<script src="static/js/jquery.js"></script>
+
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-ticker/2.0.0/jquery.easy-ticker.min.js">
+	</script>
+
+	<style>
+		.dashboard {
+			background-color: green;
+			width: 600px;
+			height: 350px;
+			border: 3px solid black;
+			overflow: hidden;
+			border-radius: 15px;
+			margin: 0px auto;
+		}
+
+		ul {
+			margin: 1px;
+			padding: 1px;
+		}
+
+		li {
+			text-align: justify;
+			border-bottom: 2px solid blue;
+		}
+
+		h1 {
+			color: red;
+		}
+	</style>
+</head>
+
+<body style="text-align:center;">
+    {% include 'menu5.html' %}
+	<h1>GFG COURSES</h1>
+	<div class="dashboard">
+		<ul id="news">
+			<li>
+				<h1>Android App with Kotlin</h1>
+				<p>
+					This course will begin from the
+					basics of Android Development and
+					will take you to a level where
+					you can make full fledged Android
+					apps. It covers things like UI
+					building, Kotlin programming,
+					communicating between different
+					screens of an app,implementing
+					static and dynamic custom lists,
+					working with databases ,fetching
+					data from the internet using REST
+					APIs, using various important
+					libraries and working with local
+					device storage.
+				</p>
+			</li>
+
+			<li>
+				<h1>
+					Data Structure and Algorithm self paced
+				</h1>
+				
+				<p>
+					This course is a complete package that
+					helps you learn Data Structures and
+					Algorithms from basic to an advanced
+					level. The course curriculum has been
+					divided into 10 weeks where you can
+					practice questions & attempt the
+					assessment tests according to your
+					own pace. The course offers you a
+					wealth of programming challenges that
+					will help you to prepare for interviews
+					with top-notch companies like Microsoft,
+					Amazon,Adobe etc.
+				</p>
+			</li>
+
+			<li>
+				<h1>Java Backend Course</h1>
+				<p>
+					This course will help you to learn
+					Advanced Java, Spring / Spring Boot,
+					Hibernate, RESTful APIs, Micro-services
+					& related technologies to build Java
+					-based web applications. The course will
+					be mentored & guided by an Industry
+					expert having hands-on experience in
+					the design, development & maintenance
+					of Java (Spring / Spring Boot) based
+					web applications.The course includes 1
+					major & 2 minor projects based on real
+					-world applications with guided lab
+					sessions.
+				</p>
+			</li>
+
+			<li>
+				<h1>Fundamentals of Java and Collections</h1>
+				<p>
+					This course covers the basics of Java
+					and in-depth explanations to Java
+					Collections Framework along with video
+					explanations of some problems based on
+					the Java Collections Framework. The
+					Java Collections Framework is a set of
+					classes, Interfaces, and methods that
+					provide us various data structures like
+					LinkedList, ArrayList, HashMap, HashSet
+					etc.
+				</p>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			// Calling easyTicker function to
+			// create newsticker movement
+			$('.dashboard').easyTicker({
+				direction: 'up',
+				easing: 'swing',
+				speed: 'slow',
+				interval: 2000,
+				height: 'auto',
+				mousePause: true,
+				controls: {
+					playText: 'Play',
+					stopText: 'Stop'
+				},
+				callbacks: {
+					before: false,
+					after: false
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html"/>
+  <title></title>
+
+  <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico"/>
+  <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="static/menu_6/css/default.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="static/news/css/styles.css"/>
+  <script src="static/js/jquery.js"></script>
+ 
+  <script type="text/javascript" src="static/news/js/responsiveCarousel.min.js"></script>
+</head>
+{% include 'menu5.html' %}
+<body>
+<h1>{{titolo}}</h1>
+  <div id="w" style="margin-left:30%;">
+
+
+
+    <div class="crsl-items" data-navigation="navbtns">
+      <div class="crsl-wrap">
+        {% for newss in news %}
+        <div class="crsl-item">
+          <div class="thumbnail">
+            <img  src= "static/news/img/{{newss.img}}" alt="{{newss.img}}"/>
+            <span class="postdate">{{newss.date.strftime("%d %B, %Y")}}</span>
+          </div>
+
+          <h3><a href="#">{{newss.title}}</a></h3>
+
+          <p>{{newss.html}}</p>
+
+          <p class="readmore"><a href="/blog">Go Back &raquo;</a></p>
+        </div><!-- post #1 -->
+        {%endfor%}
+
+      </div><!-- @end .crsl-wrap -->
+    </div><!-- @end .crsl-items -->
+
+  </div><!-- @end #w -->
+<script type="text/javascript">
+$(function(){
+  $('.crsl-items').carousel({
+    visible: 3,
+    itemMinWidth: 180,
+    itemEqualHeight: 370,
+    itemMargin: 9,
+  });
+
+  $("a[href=#]").on('click', function(e) {
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>

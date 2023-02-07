@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet"/>
+	
+	<link rel="stylesheet" type="text/css" media="all" href="static/stellarnav/css/stellarnav.css"/>
+
+  <style>
+.content { margin:5px auto; max-width:728px; line-height:1.7}
+
+    </style>
+<style>
+/* styles for this sample only */
+*{ margin: 0; padding: 0; }
+body { height: 3200px; font-size: 16px; font-family: 'Exo 2', sans-serif; background: #efefef; color: #555; }
+.header { text-align: center; }
+.header a { padding: 30px 0 0; display: block; font-size: 48px; text-decoration: none; color: #555; }
+.header p { margin: 10px 0 40px 0; font-size: 18px; }
+.container { max-width: 1200px; margin: 0 auto; }
+@media only screen and (max-width : 1000px) {
+	.stellarnav > ul > li > a { padding: 20px 23px; }
+}
+/* styles for this sample only */
+</style>
+</head>
+
+<body>
+
+
+<img src="static/img/logocz.jpg " width="7%" height="3.5%" style="float: left;"/><p style=" display: inline; vertical-align: baseline; color:#7e342d; font-weight: bold; font-size: 96px; align: center; margin-left:25%"> Carlo Zanieri <h1   style=" vertical-align: text-baseline; display: inline; color:#7e342d; font-size: 48px; text-align: center;" >.it</h1><img src="static/img/logocz.jpg" width="7%" height="3.5%" style="float: right;"/> </p>
+
+	<div class="stellarnav">
+		<ul>
+			{% for menus in menu %}
+			<li>
+
+                				<a href="{{ menus.link }}" class="gn-icon gn-icon-help">{{menus.titolo}}</a>
+
+								<ul class="dl-submenu">
+									{% for submenus in submenu %}
+									<li >
+												{% if menus.codice == submenus.radice %}
+                        					<a href="{{submenus.link}}" ><span></span> {{submenus.titolo}}</a>
+											{% endif %}
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+			{% endfor%}
+
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="static/stellarnav/js/stellarnav.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			jQuery('.stellarnav').stellarNav({
+				theme: 'dark',
+				breakpoint: 960,
+				position: 'right',
+				phoneBtn: '18009997788',
+				locationBtn: 'https://www.google.com/maps'
+			});
+		});
+	</script>
+
+</body>
+
+</html>

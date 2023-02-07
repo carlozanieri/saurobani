@@ -1,0 +1,263 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Catamaran', sans-serif;
+}
+body{
+  
+}
+
+nav{
+  position:fixed;
+  height:150px;
+  top:30px;
+  left:30px;
+  border-radius:8px;
+  z-index:20;
+  transition:$transition;
+  
+  .reference{
+    position:absolute;
+    top:5px;
+    left:0;
+    height:50px;
+    width:30px;
+    background:#fff;
+    opacity:.3;
+    pointer-events:none;
+    z-index:50;
+    transition:opacity $transition;
+    border-radius:8px;
+  }
+  
+  // first level
+  > ol{
+    position:fixed;
+    left:52px;
+    
+    > li{
+      width:0;
+      height:30px;
+      padding:0;
+      overflow:hidden;
+      transition:$transition;
+      box-shadow:8px 0 15px 0 rgba(0,0,0,0.2);
+      z-index:50;
+      border-radius:0 8px 8px 0;
+      cursor:pointer;
+      
+      a{
+        font-weight:800;
+        text-decoration:none;
+        color:#fff;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:2pt;
+        margin-left:20px;
+      }
+      
+      // second level
+      .sub-menu{
+        position:absolute;
+        z-index:-1;
+        list-style-type:none;
+        text-align:left;
+        height:0;
+        overflow:hidden;
+        transition:$transition;
+        transform:translateY(3px);
+        width:192px;
+        margin-left:8px;
+        box-shadow:2px 5px 50px 0 rgba(0,0,0,0.5);
+        border-radius:0 0 8px 8px;
+        li{
+          a{
+            font-weight:500;
+            margin-left: 13px;
+            transition:$transition;
+          }
+          &:hover{
+            a{
+              margin-left:16px;
+              transition:$transition;
+            }
+          }
+        }
+      }
+      
+      &:before{
+        content:"";
+        position:fixed;
+        left:30px;
+        width:30px;
+        height:30px;
+        visibility:visible;
+        cursor:pointer;
+        box-shadow:-7px 0 15px 0 rgba(0,0,0,0.2);
+        transition:$transition;
+      }
+      
+      &:nth-child(1){ 
+        background: $jacksons-purple;
+        &:before{
+          background:$jacksons-purple;
+          border-radius:8px 8px 0 0;
+        }
+      }
+      
+      &:nth-child(2){ 
+        background: $eye-of-newt;
+        &:before{
+          background:$eye-of-newt;
+        }
+      }
+      
+      &:nth-child(3){ 
+        background: $chilean-fire;
+        transition-delay:.4s;
+        &:before{
+          background:$chilean-fire;
+        }
+        ol{
+          li{
+            &:nth-child(1){ background: darken($chilean-fire, 5%) }
+            &:nth-child(2){ background: darken($chilean-fire, 10%) }
+            &:nth-child(3){ background: darken($chilean-fire, 15%) }
+          }
+        }
+      }
+      &:nth-child(4){ 
+        background: $alameda-ochre;
+        transition-delay:.4s;
+        &:before{
+          background:$alameda-ochre;
+        }
+        ol{
+          li{
+            &:nth-child(1){ background: darken($alameda-ochre, 5%) }
+            &:nth-child(2){ background: darken($alameda-ochre, 10%) }
+            &:nth-child(3){ background: darken($alameda-ochre, 15%) }
+          }
+        }
+      }
+      &:nth-child(5){ 
+        background: $palm-springs-splash;
+        &:before{
+          background:$palm-springs-splash;
+          border-radius:0 0  8px 8px;
+        }
+      }
+      
+      &:hover{
+        width:200px;
+        transition:$transition;
+        
+        &:nth-child(1):before{ 
+          border-radius:8px 0 0 0;
+        }
+        &:nth-child(3){
+          border-radius: 0 8px 0 0;
+        }
+        &:nth-child(4){
+          border-radius: 0 8px 0 0;
+        }
+        &:nth-child(5):before{ 
+          border-radius:0 0 0 8px;
+        }
+        
+        .sub-menu{
+          height:81px;
+          transition:$transition;
+          transition-delay:.4s;
+        }
+      }
+    }
+  }
+  
+  &:hover{
+    width:230px;
+    transition:$transition;
+    
+    .reference{
+      opacity:0;
+      transition:$transition;
+    }
+  }
+  
+}
+
+content{
+  color:rgba(255,255,255,0.9);
+  text-align:center;
+    
+    div{
+      height:500px;
+      width:100%;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      
+      > div{
+        height:100px;
+        padding:20px 10%
+      }
+    }
+    
+    h1{
+      font-size:1.2em;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:4pt;
+      margin:100px 0;
+    }
+    h2{
+      font-size:1.2em;
+      text-transform:uppercase;
+      font-weight:500;
+      letter-spacing:4pt;
+    }
+    
+    #home{
+      background:$jacksons-purple;
+    }
+    
+    #about{
+      background: $eye-of-newt;
+    }
+    
+    #widgets{
+      background: $chilean-fire;
+      
+      #bigwidgets{
+        background:darken($chilean-fire, 5%)
+      }
+      #biggerwidgets{
+        background:darken($chilean-fire, 10%)
+      }
+      #hugewidgets{
+        background:darken($chilean-fire, 15%)
+      }
+    }
+    
+    
+    #kabobs{
+      background: $alameda-ochre;
+      
+      #shishkabobs{
+        background:darken($alameda-ochre, 5%)
+      }
+      #bbqkabobs{
+        background:darken($alameda-ochre, 10%)
+      }
+      #summerkabobs{
+        background:darken($alameda-ochre, 15%)
+      }
+    }
+    
+    
+    #contact{
+      background: $palm-springs-splash;
+    }
+}

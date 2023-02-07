@@ -1,0 +1,16 @@
+{% if pag == "master" %}
+{% extends "master.html" %}
+
+{% elif pag == "blog" %}
+{% extends "blogs.html" %}
+{% else %}
+{% extends "master.html" %}
+{% endif %}
+
+{% block content %}
+
+<div class="content">
+
+</div>
+{% endblock content %}
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html"/>
+  <title>Blog by Carlo Zanieri</title>
+  <meta name="author" content="Carlo Zanieri"/>
+  <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico"/>
+  <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="static/menu_6/css/default.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="static/news/css/styles.css"/>
+  <script src="static/js/jquery.js"></script>
+  <script type="text/javascript" src="static/news/js/responsiveCarousel.min.js"></script>
+  
+		
+</head>
+
+<body>
+  {% include 'menu5.html' %}
+  <div id="w">
+    <h1>NEWS {{urlx}}</h1>
+
+    <nav class="slidernav">
+      <div id="navbtns" class="clearfix">
+        <a href="#" class="previous">prev</a>
+        <a href="#" class="next">next</a>
+      </div>
+    </nav>
+
+    <div class="crsl-items" data-navigation="navbtns">
+      <div class="crsl-wrap">
+       {% for newss in news %}
+        <div class="crsl-item">
+          <div class="thumbnail">
+            <img  src= "static/news/img/{{newss.img}}" alt="{{newss.img}}"></img>
+            <span class="postdate">{{newss.date.strftime("%d %B, %Y")}}</span>
+          </div>
+
+          <h3><a href="#">{{newss.title}}</a></h3>
+
+          <p>{{newss.html}}</p>
+          <form action="/news_one" method="post" accept-charset="utf-8" enctype="multipart/form-data" target="_parent">
+            <input id="titolo" name="titolo" type="hidden" value="{{newss.title}}" />
+            <input id="id" name="id" type="hidden" value="{{newss.id}}" />
+            <input type="submit" value="readmore" />
+          </form>
+         <!-- <p class="readmore"><a href="/news_one?titolo={{newss.title}}&amp;id={{newss.id}}"  target="_parent">Read More</a></p> -->
+        </div>
+      {% endfor %}
+
+      </div><!-- @end .crsl-wrap -->
+    </div><!-- @end .crsl-items -->
+
+  </div><!-- @end #w -->
+<script type="text/javascript">
+$(function(){
+  $('.crsl-items').carousel({
+    visible: 6,
+    itemMinWidth: 180,
+    itemEqualHeight: 370,
+    itemMargin: 9,
+  });
+
+  $("a[href=#]").on('click', function(e) {
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>
