@@ -44,7 +44,7 @@ from tornado.websocket import WebSocketHandler
 from tornado.options import define, options
 class Connect:
 
-    define("mysql_host", default="carlozanieri.it", help="carlozanieri database host")
+    define("mysql_host", default="carlozanieri.net", help="carlozanieri database host")
     define("mysql_database", default="saurobani", help="carlozanieri database name")
     define("mysql_user", default="root", help="carlozanieri database user")
     define("mysql_password", default="trex39", help="carlozanieri database password")
@@ -260,7 +260,7 @@ class Connect:
     def manifesta(self):
         data = date.today().strftime("%Y-%m-%d %H:%M:%S")
         #data="2021-06-08 00:00:00"
-        db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
+        db = MySQLdb.connect(options.mysql_host, options.mysql_2001:41d0:202:100:91:134:128:90user, options.mysql_password, options.mysql_database)
         ##print(menu)
         cursor = db.cursor()
         cursor.execute("SELECT *  from manifestazioni where published >= '" + data + "'")
