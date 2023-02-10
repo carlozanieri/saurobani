@@ -44,10 +44,10 @@ from tornado.websocket import WebSocketHandler
 from tornado.options import define, options
 class Connect:
 
-    define("mysql_host", default="carlozanieri.it", help="carlozanieri database host")
+    define("mysql_host", default="carlozanieri.eu", help="carlozanieri database host")
     define("mysql_database", default="saurobani", help="carlozanieri database name")
     define("mysql_user", default="root", help="carlozanieri database user")
-    define("mysql_password", default="trex39", help="carlozanieri database password")
+    define("mysql_password", default="@trex39@", help="carlozanieri database password")
 
     def get(sbarcode):
         barcodes = str(sbarcode)
