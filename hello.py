@@ -112,9 +112,9 @@ class HelloWorld():
         #id=request.POST['id']
         return tmp.render(pagina=Connect.body("", "sanpiero"), manifestazione="Blog", blogs=Connect.blogs_one("",titolo, id))
     @cherrypy.expose
-    def sanpiero(self):
+    def mostrairan(self):
         tmpl = env.get_template('mytemplate.html')
-        return tmpl.render(salutation='Hello', target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "sanpiero"),  luogo = "sanpiero")
+        return tmpl.render(salutation='Hello', target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan")
 
     @cherrypy.expose
     def mugello(self):
