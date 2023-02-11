@@ -14,7 +14,7 @@ import tornado.escape
 import smtplib
 import codecs
 from smtplib import SMTP, SMTPException
-
+import sqlite3
 # *******
 import bcrypt
 import concurrent.futures
@@ -44,10 +44,10 @@ from tornado.websocket import WebSocketHandler
 from tornado.options import define, options
 class Connect:
 
-    define("mysql_host", default="184.174.32.37", help="carlozanieri database host")
+    define("mysql_host", default="blog.carlozanieri.it", help="carlozanieri database host")
     define("mysql_database", default="saurobani", help="carlozanieri database name")
     define("mysql_user", default="root", help="carlozanieri database user")
-    define("mysql_password", default="@trex39@", help="carlozanieri database password")
+    define("mysql_password", default="trex39", help="carlozanieri database password")
 
     def get(sbarcode):
         barcodes = str(sbarcode)
@@ -87,23 +87,25 @@ class Connect:
         return rss
 
     def pdf(self):
-
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         db = pymysql.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database, cursorclass=pymysql.cursors.DictCursor)
 
         cursor = db.cursor()
-        cursor.execute("SELECT *  from primanota where id >= 13 and id <= 17 order by id asc")
+        cur.execute("SELECT *  from primanota where id >= 13 and id <= 17 order by id asc")
 
-        pdf = cursor.fetchall()
+        pdf = cur.fetchall()
 
         return pdf
 
     def primanota(self, id):
-
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         db = pymysql.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database, cursorclass=pymysql.cursors.DictCursor)
         cursor = db.cursor()
-        cursor.execute("SELECT *  from primanota where data='" + id + "'" )
+        cur.execute("SELECT *  from primanota where data='" + id + "'" )
 
-        primanota = cursor.fetchall()
+        primanota = cur.fetchall()
         #primanota = primanota[1]["descrizione"]
         return primanota
 
@@ -139,11 +141,12 @@ class Connect:
     def menu(self):
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-
-        cursor = db.cursor()
-        cursor.execute("SELECT *  from menuweb where livello=2")
-
-        rows = cursor.fetchall()
+        conn = sqlite3.connect('static/saurobani.db')
+        
+        cur = conn.cursor()
+        cur.execute('SELECT *  from menuweb where livello=2')
+        rows = cur.fetchall()
+        
         menu = [dict(id=row[0], codice=row[1],radice=row[2], titolo=row[4], link=row[6]) for row in rows]
         #menu = primanota[1]["descrizione"]
         return menu
@@ -152,20 +155,24 @@ class Connect:
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
         ##print(menu)
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         cursor = db.cursor()
-        cursor.execute("SELECT *  from menuweb where livello=3 and radice = '" + menu + "'")
+        cur.execute("SELECT *  from menuweb where livello=3 and radice = '" + menu + "'")
 
-        submenu = cursor.fetchall()
+        submenu = cur.fetchall()
         #menu = primanota[1]["descrizione"]
         return submenu
     def submnu(self):
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
         ##print(menu)
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         cursor = db.cursor()
-        cursor.execute("SELECT *  from menuweb where livello=3 ")
+        cur.execute("SELECT *  from menuweb where livello=3 ")
 
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         submenu = [dict(id=row[0], codice=row[1],radice=row[2], titolo=row[4], link=row[6]) for row in rows]
         return submenu
     def submnu2(self):
@@ -181,21 +188,24 @@ class Connect:
     def body(self, pagina):
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(menu)
-        cursor = db.cursor()
-        cursor.execute("SELECT *  from entries where slug = '" + pagina + "'")
+        ##print(menu)conn = sqlite3.connect('static/saurobani.db')
+        
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from entries where slug = '" + pagina + "'")
 
-        body = cursor.fetchone()
+        body = cur.fetchone()
         #menu = primanota[1]["descrizione"]
         return body
     def slider(self, luogo):
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
         ##print(menu)
-        cursor = db.cursor()
-        cursor.execute("SELECT *  from slider where codice = '" + luogo + "'")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from slider where codice = '" + luogo + "'")
         ##cursor.execute("SELECT *  from slider")
-        slider = cursor.fetchall()
+        slider = cur.fetchall()
         #menu = primanota[1]["descrizione"]
         return slider
 
@@ -203,12 +213,10 @@ class Connect:
         data =datetime.now()
         #data = "2021-06-08 00:00:00"
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(menu)
-        cursor = db.cursor()
-        ##cursor.execute("SELECT *  from news where published <= '" + str(data) + "'")
-        cursor.execute("SELECT *  from news")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         ##cursor.execute("SELECT *  from slider")
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         news = [dict(id=row[0], title=row[2], dir=row[8], img=row[7], html=row[4], html2=row[9], date=row[6]) for row in rows]
         # menu = primanota[1]["descrizione"]
         return news
@@ -217,12 +225,11 @@ class Connect:
         data =datetime.now()
         #data = "2021-06-08 00:00:00"
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(menu)
-        cursor = db.cursor()
-        ##cursor.execute("SELECT *  from blog where published <= '" + str(data) + "'")
-        cursor.execute("SELECT *  from blog")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from blog")
         ##cursor.execute("SELECT *  from slider")
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         blogs = [dict(id=row[0], title=row[2], dir=row[8], img=row[7], html=row[4], html2=row[9],date=row[6]) for row in rows]
         # menu = primanota[1]["descrizione"]
         return blogs
@@ -232,13 +239,12 @@ class Connect:
         #data = "2021-06-08 00:00:00"
         ##titolo=titolo
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(titolo)
-        cursor = db.cursor()
-        ####cursor.execute("SELECT *  from blog where id = 3")
-        cursor.execute("SELECT *  from blog where id = '" + id + "'")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from blog where id = '" + id + "'")
         ##cursor.execute("SELECT *  from slider")
         ##news = cursor.fetchall()
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         blogs = [dict(id=row[0], title=row[3], dir=row[9], img=row[7], html=row[4], date=row[6]) for row in rows]
         return blogs
     
@@ -247,13 +253,12 @@ class Connect:
         #data = "2021-06-08 00:00:00"
         ##titolo=titolo
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(titolo)
-        cursor = db.cursor()
-        ####cursor.execute("SELECT *  from news where id = 3")
-        cursor.execute("SELECT *  from news where id = '" + id + "'")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from news where id = '" + id + "'")
         ##cursor.execute("SELECT *  from slider")
         ##news = cursor.fetchall()
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         news = [dict(id=row[0], title=row[3], dir=row[9], img=row[7], html=row[5], date=row[6]) for row in rows]
         return news
 
@@ -261,11 +266,11 @@ class Connect:
         data = date.today().strftime("%Y-%m-%d %H:%M:%S")
         #data="2021-06-08 00:00:00"
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(menu)
-        cursor = db.cursor()
-        cursor.execute("SELECT *  from manifestazioni where published >= '" + data + "'")
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from manifestazioni where published >= '" + data + "'")
         ##cursor.execute("SELECT *  from slider")
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         manifesta = [dict(id=row[0], title=row[3], html=row[5], date=row[6], dir=row[9], img=row[8]) for row in rows]
         return manifesta
 
@@ -273,21 +278,21 @@ class Connect:
         data = date.today().strftime("%Y-%m-%d %H:%M:%S")
         #data = "2021-06-08 00:00:00"
         ##titolo=titolo
-        db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        ##print(titolo)
-        cursor = db.cursor()
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         ####cursor.execute("SELECT *  from news where id = 3")
-        cursor.execute("SELECT *  from manifestazioni where id = '" + id + "'")
+        cur.execute("SELECT *  from manifestazioni where id = '" + id + "'")
         ##cursor.execute("SELECT *  from slider")
-        rows = cursor.fetchall()
+        rows = cur.fetchall()
         manifesta = [dict(id=row[0], title=row[3], dir=row[9], img=row[8], html=row[5], date=row[6]) for row in rows]
         # menu = primanota[1]["descrizione"]
         return manifesta
 
     def ins_manifesta(self, dir, file, titolo, descrizione):
-
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        mycursor = db.cursor()
+        mycursor = conn.cursor()
         data=str(datetime.now())
         riga="INSERT INTO manifestazioni (id,author_id,title, markdown, html, img, dir, html2, html3, img2,img3) VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s)"
         valori = (0,2,titolo,descrizione,descrizione,file,dir,'html2','html3','img2','img3')
@@ -301,15 +306,16 @@ class Connect:
         print("Inserted Id :", mycursor.lastrowid)
   
         # To ensure the Data Insertion, commit database.
-        db.commit() 
+        conn.commit() 
   
         # close the Connection
-        db.close()
+        conn.close()
     
     def ins_news(self, dir, file, titolo, descrizione, tipo):
-
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
-        mycursor = db.cursor()
+        mycursor = conn.cursor()
         data=str(datetime.now())
         riga="INSERT INTO news (id,author_id,title, markdown, html, img, dir, html2, html3, img2,img3) VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s)"
         valori = (0,2,titolo,descrizione,descrizione,file,dir,'html2','html3','img2','img3')
@@ -326,7 +332,7 @@ class Connect:
         db.commit() 
   
         # close the Connection
-        db.close()
+        conn.close()
     
     def get_class(kls):
         parts = kls.split('.')
