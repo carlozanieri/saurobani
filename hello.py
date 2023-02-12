@@ -45,12 +45,12 @@ class HelloWorld():
             
         elif cherrypy.url() == 'http://0.0.0.0/' :
             tmpl = env.get_template('index.html')
-            page = tmpl.render(blogs=Connect.blog(""), target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mugello"),  luogo = "mugello", urlx=cherrypy.url())
+            page = tmpl.render(blogs=Connect.blog(""), target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan", urlx=cherrypy.url())
         
         else:
             tmpl = env.get_template('mytemplate.html')
             pag="blog"
-            page = tmpl.render(pag="master",blogs=Connect.blog(""), target=kwargs,  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "sanpiero"),  luogo = "sanpiero", news=Connect.news(""),urlx=cherrypy.url())
+            page = tmpl.render(pag="master",blogs=Connect.blog(""), target=kwargs,  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan", news=Connect.news(""),urlx=cherrypy.url())
                  
 
         return page
