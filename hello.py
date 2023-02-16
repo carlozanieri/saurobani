@@ -43,7 +43,7 @@ class HelloWorld():
         
         
             
-        elif cherrypy.url() == 'http://0.0.0.0/' :
+        elif cherrypy.url() == 'https://0.0.0.0/' :
             tmpl = env.get_template('index.html')
             page = tmpl.render(blogs=Connect.blog(""), target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan", urlx=cherrypy.url())
         
