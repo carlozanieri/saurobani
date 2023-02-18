@@ -215,7 +215,7 @@ class Connect:
         ##print(menu)
         conn = sqlite3.connect('static/saurobani.db')
         cur = conn.cursor()
-        cur.execute("SELECT *  from slider where codice = '" + luogo + "'")
+        cur.execute("SELECT *  from slider where ID = '" + luogo + "'")
         ##cursor.execute("SELECT *  from slider")
         slider = cur.fetchall()
         #menu = primanota[1]["descrizione"]
