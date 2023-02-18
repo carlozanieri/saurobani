@@ -217,7 +217,7 @@ class Connect:
         cur = conn.cursor()
         cur.execute("SELECT *  from slider where ID = '" + luogo + "'")
         ##cursor.execute("SELECT *  from slider")
-        slider = cur.fetchone()
+        slider = cur.fetchall()
         #menu = primanota[1]["descrizione"]
         return slider
 
