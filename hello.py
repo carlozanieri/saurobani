@@ -85,7 +85,7 @@ class HelloWorld():
         
         #luogo = request.params[0]
 
-        return tmp.render(luogo = "sanpiero", slider=Connect.slider("", luogo), renderer="json")
+        return tmp.render(luogo = "mostrairan", slider=Connect.slider("", luogo), renderer="json")
 
     @cherrypy.expose
     def didascalia(self, luogo):
