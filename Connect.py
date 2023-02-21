@@ -216,8 +216,8 @@ class Connect:
         #directory = 'path/to/dir'
         for filename in os.is_file(directory):
             f = os.path.join(directory, filename)
-            if os.path.isfile(f):
-                slider.append(f)
+            #if os.path.isfile(f):
+            slider.append(f)
             
        
         return slider
