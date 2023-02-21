@@ -50,21 +50,16 @@
         <div class="wrapper">
             <div   id="slider" class="nivoSlider">
                
-                {% for sliders in slider %}
-                
-                
-                
-                {% endfor %}
-
+               
                 {% for i in range(0, len(slider)) %}
                 
                 <span>
                     
-                <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[i]}}" />
+                <img class="zoom" src= "{{slider[i]}}" alt="" title="#htmlcaption{{slider[i]}}" />
                 </span>
 				{% endfor %}
-                <p>{{sliders[i]}}</p>
-                {% endfor %}
+                
+                
                 
             </div>
     
