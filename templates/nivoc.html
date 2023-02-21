@@ -56,13 +56,14 @@
                 
                 {% endfor %}
 
-                {% for sliders in slider %}
+                {% for i in range(0, len(slider)) %}
                 
                 <span>
                     
-                <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[0]}}" />
+                <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[i]}}" />
                 </span>
-                <p>{{sliders[0]}}</p>
+				{% endfor %}
+                <p>{{sliders[i]}}</p>
                 {% endfor %}
                 
             </div>
