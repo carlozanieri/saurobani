@@ -95,7 +95,7 @@ class HelloWorld():
         
         #luogo = request.params[0]
 
-        return tmp.render( slider=Connect.slider("", luogo), renderer="json")
+        return tmp.render( slider=Connect.sliderc("", luogo), renderer="json")
 
 
     @cherrypy.expose
