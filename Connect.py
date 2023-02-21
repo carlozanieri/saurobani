@@ -213,7 +213,7 @@ class Connect:
 
         import os
         slider =[]
-        #directory = 'path/to/dir'
+        directory = 'static/img/mostrairanc'
         for filename in os.listdir(directory):
             f = os.path.join(directory, filename)
             #if os.path.isfile(f):
