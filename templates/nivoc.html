@@ -49,10 +49,11 @@
         <div class="wrapper">
             <div   id="slider" class="nivoSlider">
                 {%print(slider)%}
+                
                 {% for sliders in slider %}
     
                 <span>
-                <img class="zoom" src= "static/img/mostrairanc/{{sliders[1]}}" alt="" title="#htmlcaption{{sliders[1]}}" />
+                <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[0]}}" />
                 </span>
                 
                 {% endfor %}
