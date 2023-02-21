@@ -48,14 +48,14 @@
 
         <div class="wrapper">
             <div   id="slider" class="nivoSlider">
-                {%print(slider[0])%}
+                {%i=0%}
                 
                 {% for sliders in slider %}
-                {%print(slider[1])%}
-                <span>
-                <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[0]}}" />
-                </span>
                 
+                <span>
+                <img class="zoom" src= "{{sliders[i]}}" alt="" title="#htmlcaption{{sliders[i]}}" />
+                </span>
+                {%i=i+1%}
                 {% endfor %}
                 
             </div>
