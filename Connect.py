@@ -218,7 +218,7 @@ class Connect:
             f = os.path.join(directory, filename)
         if os.path.isfile(f):
             slider.append(f)
-            print(f)
+            
        
         return slider
     
