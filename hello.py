@@ -86,6 +86,17 @@ class HelloWorld():
         #luogo = request.params[0]
 
         return tmp.render( slider=Connect.slider("", luogo), renderer="json")
+    
+    @cherrypy.expose
+    def slidec(self, luogo):
+       
+        tmp=env.get_template('nivo.html')
+        streamValue=tmp.generate()
+        
+        #luogo = request.params[0]
+
+        return tmp.render( slider=Connect.slider("", luogo), renderer="json")
+
 
     @cherrypy.expose
     def didascalia(self, luogo):

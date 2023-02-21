@@ -209,6 +209,18 @@ class Connect:
         #menu = primanota[1]["descrizione"]
         return slider
     
+    def sliderc(self, luogo):
+
+        db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
+        ##print(menu)
+        conn = sqlite3.connect('static/saurobani.db')
+        cur = conn.cursor()
+        cur.execute("SELECT *  from slidercolor where codice = '" + luogo + "'")
+        ##cursor.execute("SELECT *  from slider")
+        slider = cur.fetchall()
+        #menu = primanota[1]["descrizione"]
+        return slider
+    
     def didascalia(self, luogo):
 
         db = MySQLdb.connect(options.mysql_host, options.mysql_user, options.mysql_password, options.mysql_database)
