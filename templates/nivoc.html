@@ -50,7 +50,14 @@
         <div class="wrapper">
             <div   id="slider" class="nivoSlider">
                
+                {% for sliders in slider %}
                 
+                <span>
+					<p>{{slider[]}}</p>  
+                 </span>
+                
+                {% endfor %}
+
                 {% for sliders in slider %}
                 
                 <span>
