@@ -214,7 +214,7 @@ class Connect:
         import os
         slider =[]
         #directory = 'path/to/dir'
-        for filename in os.is_file(directory):
+        for filename in os.listdir(directory):
             f = os.path.join(directory, filename)
             #if os.path.isfile(f):
             slider.append(f)
