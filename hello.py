@@ -90,7 +90,7 @@ class HelloWorld():
     @cherrypy.expose
     def slidec(self, luogo):
        
-        tmp=env.get_template('nivo.html')
+        tmp=env.get_template('nivoc.html')
         streamValue=tmp.generate()
         
         #luogo = request.params[0]
