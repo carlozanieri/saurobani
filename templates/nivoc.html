@@ -44,6 +44,7 @@
 </head>
 
 <body >
+
     <div   id="wrapper">
 
         <div class="wrapper">
@@ -51,12 +52,12 @@
                
                 
                 {% for sliders in slider %}
-                <p>{{sliders[]}}</p>
+                
                 <span>
                     
                 <img class="zoom" src= "{{sliders[0]}}" alt="" title="#htmlcaption{{sliders[0]}}" />
                 </span>
-                
+                <p>{{sliders[]}}</p>
                 {% endfor %}
                 
             </div>
