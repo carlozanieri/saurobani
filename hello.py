@@ -128,6 +128,12 @@ class HelloWorld():
         return tmpl.render(salutation='Hello', target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan")
 
     @cherrypy.expose
+    def iran2022(self):
+        tmpl = env.get_template('nivoc.html')
+        return tmpl.render(salutation='Hello', target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mostrairan"),  luogo = "mostrairan")
+
+
+    @cherrypy.expose
     def mugello(self):
         tmpl = env.get_template('mytemplate.html')
         return tmpl.render(salutation='Hello', target='World',  menu=Connect.menu(""), submenu=Connect.submnu(""),pagina=Connect.body("", "mugello"),  luogo = "mugello")
