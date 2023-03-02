@@ -138,7 +138,7 @@ body {
 /* Direction nav styles (e.g. Next & Prev) */
 .nivo-directionNav a {
 	position:absolute;
-	top:5%;
+	top:55%;
 	z-index:9;
 	cursor:pointer;
 	display:none;
