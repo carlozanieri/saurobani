@@ -100,7 +100,7 @@ body {
 .nivo-caption {
 	position:absolute;
 	left:-400px;
-	bottom:170px;
+	bottom:10px;
 	width:300px;
 	color:#fff;
 	z-index:8;
