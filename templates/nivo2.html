@@ -64,13 +64,14 @@
 {% for sliders in slider %}
 <div class="wrapper">
 	<div   id="slider" class="nivoSlider">
-	
+		
+
 		<span>
 		<img class="zoom" src= "static/img/{{sliders[1]}}/background.png" alt="" title="#htmlcaption{{sliders[0]}}" />
 		</span>
 				
 	</div>
-
+	
     <div id="htmlcaption{{sliders[0]}}" class="nivo-html-caption">
 
 		<h1><a style="color:#000000;" href="{{sliders[5]}}">{{sliders[3]}}</a></h1>
@@ -78,7 +79,7 @@
 		
 	    <p> {{sliders[6]}} <a href="/didascalia?luogo={{sliders[0]}}" 
 			target="popup" 
-			onclick="window.open('/didascalia?luogo={{sliders[0]}}','popup',"width=450,height=320,screenX=50,screenY=50,Top=50,Left=50,status=no,toolbar=no,scrollbars=no,resizeable=no,location=no"); return false;">
+			onclick="window.open('/didascalia?luogo={{sliders[0]}}','popup','width=720,height=720'); return false;">
 			  Leggi Tutto
 		  </a></p>
 		  <p><a href="">Continua...</a></p>
