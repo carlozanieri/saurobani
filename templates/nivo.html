@@ -46,21 +46,7 @@
 <body >
     <div   id="wrapper">
 
-		{% for sliders in slider %}
-		<div style="position: absolute; top: 0;" id="htmlcaption{{sliders[0]}}" class="nivo-html-caption">
-	
-			<h1><a style="color:#000000;" href="{{sliders[5]}}">{{sliders[3]}}</a></h1>
-		
-			
-			<p> {{sliders[6]}} <a href="/didascalia?luogo={{sliders[0]}}" 
-				target="popup" 
-				onclick="window.open('/didascalia?luogo={{sliders[0]}}','popup','width=720,height=720'); return false;">
-				  Leggi Tutto
-			  </a></p>
-			  <p><a href="">Continua...</a></p>
-				
-			</div>
-	{% endfor %}	
+
 	<div class="wrapper">
 	    <div   id="slider" class="nivoSlider">
 			{% for sliders in slider %}
@@ -75,7 +61,21 @@
 .
 	</div>
 	
+{% for sliders in slider %}
+    <div style="position: absolute; top: 0;" id="htmlcaption{{sliders[0]}}" class="nivo-html-caption">
 
+		<h1><a style="color:#000000;" href="{{sliders[5]}}">{{sliders[3]}}</a></h1>
+	
+		
+	    <p> {{sliders[6]}} <a href="/didascalia?luogo={{sliders[0]}}" 
+			target="popup" 
+			onclick="window.open('/didascalia?luogo={{sliders[0]}}','popup','width=720,height=720'); return false;">
+			  Leggi Tutto
+		  </a></p>
+		  <p><a href="">Continua...</a></p>
+			
+		</div>
+{% endfor %}
 	</div>
 
 
